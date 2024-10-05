@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Odianna's Auspicious Muhurat Finder for Griha Pravesh 2024-2025</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f5e6cc;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #4CAF50;
+            font-size: 2.5em;
+            font-weight: bold;
+        }
+
+        .tabs {
+            display: flex;
+            justify-content: space-around;
+            margin-bottom: 20px;
+            background-color: #ffbf00;
+            padding: 10px;
+            flex-wrap: wrap;
+        }
+        /* Style for different colored letters in Odianna's*/
+        .O { color: red; }
+        .d { color: blue; }
+        .i { color: green; }
+        .a { color: white; }
+        .N1 { color: purple; }
+        .N2 { color: teal; }
+        .N3 { color: magneta; }
+        .N4{ color:black; }
+        .N5{ color:red; }
+        .tabs button {
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #fff;
+            border-radius: 5px;
+            background-color: #f77f00;
+            border: none;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        .tabs button:hover {
+            background-color: #e67300;
+        }
+
+        .form-group {
+            margin: 20px 0;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        select,
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        select {
+            color: #666;
+        }
+
+        select:invalid {
+            color: gray;
+        }
+
+        .result-box {
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .result-box h2 {
+            color: #e85d04;
+            font-weight: bold;
+        }
+
+        .muhurat-details h3 {
+            margin: 10px 0;
+            color: #023e8a;
+            font-weight: bold;
+        }
+
+        .muhurat-details p {
+            margin: 5px 0;
+            font-size: 1.1em;
+        }
+
+     .calendar img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        /* Hide all sections initially */
+        .tab-content {
+            display: none;
+        }
+
+        .calendar-months button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-weight: bold;
+            color: #fff;
+            background-color: #f77f00;
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .calendar-months button:hover {
+            background-color: #e67300;
+        }
+
+        @media (min-width: 768px) {
+            .tabs {
+                justify-content: space-between;
+            }
+
+            h1 {
+                font-size: 3em;
+            }
+
+            select,
+            input[type="text"] {
+                font-size: 1.2em;
+            }
+
+            .result-box h2,
+            .muhurat-details h3 {
+                font-size: 1.5em;
+            }
+        }
+
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1><span class="O">O</span><span class="d">d</span><span class="i">i</span><span class="a">a</span><span class="N1">n</span><span class="N2">n</span><span class="N3">a</span><span class="N4">'</span><span class="N5">s</span> Auspicious Muhurat Finder for Griha Pravesh 2024-2025</h1>
+
+        <!-- Tabs Section -->
+        <div class="tabs">
+            <button onclick="openTab('muhurat')">Muhurat Finder</button>
+            <button onclick="openTab('calendar')">Odia Calendar 2024</button>
+            <button onclick="openTab('tips')">Our Tips</button>
+            <button onclick="openTab('faqs')">FAQs</button>
+        </div>
+
+        <!-- Form Section (Muhurat Finder) -->
+        <div id="muhurat" class="tab-content">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" placeholder="Enter your name">
+            </div>
+
+            <div class="form-group">
+                <label for="city">City</label>
+                <select id="city" required>
+                    <option value="" disabled selected>Select your city</option>
+                    <option>Bhubaneswar</option>
+                    <option>Cuttack</option>
+                    <option>Dhenkanal</option>
+                    <option>Angul</option>
+                    <option>Sambalpur</option>
+                    <option>Rourkela</option>
+                    <option>Behrampur</option>
+                    <option>Puri</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="month">Select Month for Griha Pravesh Muhurat</label>
+                <select id="month" required>
+                    <option value="" disabled selected>Select a month</option>
+                    <option>October 2024</option>
+                    <option>November 2024</option>
+                    <option>December 2024</option>
+                </select>
+            </div>
+
+            <button onclick="showMuhurat()">Show Muhurat</button>
+
+           <!-- Muhurat Results -->
+            <div class="result-box" id="result">
+                <!-- Muhurat Details Will Appear Here -->
+            </div>
+        </div>
+
+       <!-- Calendar Section -->
+        <div id="calendar" class="tab-content">
+            <h2>Odia Calendar 2024</h2>
+            <div class="calendar-months">
+                <button onclick="showCalendar('October')">October</button>
+                <button onclick="showCalendar('November')">November</button>
+                <button onclick="showCalendar('December')">December</button>
+            </div>
+            <img id="calendarImage" src="" alt="Odia Calendar">
+        </div>
+
+      <!-- Tips Section -->
+<div id="tips" class="tab-content">
+    <h2>How the algorithm works?</h2>
+    <p>
+        Auspicious Griha Pravesh Dates are calculated after doing Panchang Shuddhi or Panchangam Shuddhi. Panchang Shuddhi not only gives auspicious Griha Pravesh dates but also provides the Shubh time to perform Griha Pravesh Puja, Homam, and Vastu Shanti Puja. House Warming Ceremony dates for 2024 are calculated by doing Nakshatra, Weekday, Tithi, and Lunar Month Shuddhi for all days of the year.
+    </p>
+    <p>
+        According to <strong>Muhurta Chintamani</strong> and other religious texts like <strong>Dharmasindhu</strong>, entry into a new home should not be done while Shukra Tara and Guru Tara are Asta (set). To find the exact timings of Shukra Asta and Guru Asta, you can search for them on the web. Panchang Shuddhi excludes days when Shukra and Guru Tara are set or combusted. Additionally, days during a leaped Lunar month are also excluded during Panchangam Shuddhi.
+    </p>
+    <p>
+        We only list Muhurats that prevail for at least 5 minutes, and those that last less than 5 minutes are discarded. Muhurats are calculated from Sunrise to Sunrise.
+    </p>
+    <p>
+        All auspicious Griha Pravesh dates and timings are location-based, so it is important to set the city first before noting down the Shubh Griha Pravesh dates and Muhurat timings. Panchang Shuddhi is the first step in determining an auspicious Griha Pravesh day, and it is advised to consult a learned scholar in astrology before finalizing a Griha Pravesh date from the published list.
+    </p>
+<h3>Tips for Griha Pravesh Ceremony</h3>
+    <p><strong>Choose the Right Muhurat:</strong> The timing of your Griha Pravesh is crucial. Consult an astrologer to find a Shubh Muhurat, based on your birth chart, Nakshatra (constellation), and lunar calendar. Avoid inauspicious months like Ashada (June-July) and days like Amavasya (New Moon) or days with Grahan (eclipses).</p>
+
+    <p><strong>Vastu Shanti Before Entering the House:</strong> Perform a Vastu Shanti Puja to purify the house and eliminate any negative influences. This ensures harmony in the house and a peaceful living environment. The Puja is also believed to correct any potential Vastu doshas (defects).</p>
+
+    <p><strong>Perform a Ganapati Puja:</strong> Before moving into your new home, conduct a Ganapati Puja to remove obstacles and bring good fortune. Lord Ganesha, the remover of obstacles, is worshipped first in all Hindu rituals.</p>
+
+    <p><strong>Prepare a Kalash for Entry:</strong> During the ceremony, the lady of the house should carry a Kalash (pot filled with water and topped with a coconut and mango leaves) into the home as a symbol of prosperity. This is usually the first item brought into the house.</p>
+
+    <p><strong>Use of Traditional Items:</strong> For the ceremony, use holy items such as:
+        <ul>
+            <li>Cow dung and Gomutra (cow urine) for purification</li>
+            <li>Turmeric and Kumkum (vermilion) for prosperity</li>
+            <li>Holy water from the Ganga River</li>
+            <li>Mango leaves and rice grains as part of the ritual offerings.</li>
+        </ul>
+    </p>
+
+    <p><strong>Light a Lamp:</strong> As soon as you enter the house, light a ghee lamp in the prayer room or at the entrance. Lighting a lamp symbolizes removing darkness and inviting positive energy and divine blessings into the house.</p>
+
+    <p><strong>Cook and Offer Prasad:</strong> One of the most important customs is cooking a meal in the new house. Prepare something sweet, such as kheer or sweets, and offer it to the deities as Prasad before consuming it. This marks a positive beginning and is a way to share the house’s blessings with everyone.</p>
+
+    <p><strong>Avoid Empty Rooms During the Ceremony:</strong> According to Vastu, it’s essential that the house is fully completed before the ceremony. Ensure that major rooms, such as the kitchen and living area, are ready for use, and avoid performing the ceremony in a house that is still under construction.</p>
+
+    <p><strong>Proper Entrance Direction:</strong> Ensure that the main entrance of the house is used to enter the home during the ceremony. According to Vastu, the entrance should face a favorable direction (ideally north, east, or northeast), and should be decorated with flowers and rangoli to invite prosperity.</p>
+
+    <p><strong>Offer Grains and Money:</strong> As part of the Griha Pravesh Puja, offering grains and money (especially coins) is considered auspicious. These offerings signify abundance and a prosperous life in the new home.</p>
+
+    <p><strong>Decorate the Entrance:</strong> Decorate the entrance with a Toran (a garland of mango leaves) and rangoli designs to invite positive energy and attract prosperity into the house. A well-decorated entrance is said to bring in good luck.</p>
+
+    <p><strong>Perform a Havan (Fire Ritual):</strong> The havan purifies the space and aligns the environment with divine energy. Burning herbs and ghee in the sacred fire drives away negative energies and spreads positive vibrations throughout the house.</p>
+
+    <p><strong>Invite Family and Friends:</strong> It is customary to invite close family and friends to witness and participate in the ceremony. Their presence adds joy and positivity to the occasion, and they can offer blessings and well-wishes for your new journey.</p>
+
+    <p><strong>Start Living in the House Immediately:</strong> Once the Griha Pravesh ceremony is performed, it is considered auspicious to start living in the house on the same day. Avoid leaving the house vacant for long periods after the ceremony.</p>
+
+    <h3>Avoid Doing These Things:</h3>
+    <ul>
+        <li>Don’t perform Griha Pravesh during Rahukaal or in inauspicious Tithis.</li>
+        <li>Avoid breaking or damaging anything in the house during the ceremony as it is believed to bring bad luck.</li>
+        <li>Do not move into the house during the period of Shukra and Guru Tara Asta (when Venus or Jupiter are combust in the sky).</li>
+    </ul>
+</div>
+
+
+        <!-- FAQs Section -->
+<div id="faqs" class="tab-content">
+    <h2>FAQs</h2>
+
+    <p><strong>What is Griha Pravesh?</strong> Griha Pravesh is a traditional Hindu ceremony performed when entering a new home for the first time. It is believed to purify the home and invite positive energy, prosperity, and good health. The ceremony is conducted by a priest, who performs rituals to appease the gods and planetary forces.</p>
+
+    <p><strong>Why is it important to perform Griha Pravesh according to Vastu and astrology?</strong> Performing Griha Pravesh at the right time ensures that the home is filled with positive energy. According to Vastu Shastra, the proper alignment of the home with the natural elements brings prosperity. Astrology ensures that the ceremony is done at an auspicious time based on planetary positions and the owner's birth chart.</p>
+
+    <p><strong>How is the auspicious time for Griha Pravesh determined?</strong> The auspicious time, or Shubh Muhurat, for Griha Pravesh is determined based on the homeowner's horoscope, lunar calendar, and favorable planetary positions. Vedic astrologers consider the Nakshatra (constellation), Tithi (lunar day), and weekdays to select a suitable time.</p>
+
+    <p><strong>What are the best months for Griha Pravesh as per Vastu and astrology?</strong> According to Vastu and Hindu astrology, the most auspicious months for Griha Pravesh generally include Magha, Phalguna, Vaishakha, and Jyeshtha (which correspond to January, February, April, and May). Months like Ashada (June-July), Shraavana (July-August), and Bhadrapada (August-September) are generally avoided.</p>
+
+    <p><strong>Which days should be avoided for Griha Pravesh?</strong> Days such as Amavasya (New Moon), Eclipse days, and inauspicious Tithis like Dwitiya (2nd lunar day) and Chaturdashi (14th lunar day) are generally avoided. Tuesdays and Saturdays are also considered inauspicious by many.</p>
+
+    <p><strong>Can Griha Pravesh be performed during the night?</strong> No, Griha Pravesh is traditionally performed during daylight hours. Astrologers typically recommend completing the ceremony between sunrise and noon, ensuring that the planetary positions are favorable.</p>
+
+    <p><strong>What should be done if Griha Pravesh cannot be performed on an auspicious day?</strong> If the Griha Pravesh cannot be performed on an auspicious day due to personal constraints, you can perform a Vastu Shanti Puja or perform minor rituals to purify the house. The proper Griha Pravesh ceremony can be done at a later time when the Muhurat is favorable.</p>
+
+    <p><strong>Is it necessary to do a Griha Pravesh if you are renting a home?</strong> Yes, many believe that performing a small Vastu Puja or Griha Pravesh ceremony even in a rented home can help cleanse the space of any negative energies and bring peace and prosperity to the residents.</p>
+
+    <p><strong>What are the key rituals performed during Griha Pravesh?</strong> The key rituals include:<br>
+        - Ganapati Puja to remove obstacles.<br>
+        - Vastu Shanti Puja to pacify any negative energies in the house.<br>
+        - Havan (fire ceremony) to purify the environment.<br>
+        - Kalash Puja for prosperity and well-being.
+    </p>
+
+    <p><strong>What are the items required for the Griha Pravesh ceremony?</strong> Items typically required include:<br>
+        - Kalash (a pot filled with water and topped with a coconut)<br>
+        - Mango leaves<br>
+        - Rice grains<br>
+        - Turmeric, Kumkum (vermilion)<br>
+        - Flowers, fruits, sweets<br>
+        - Ghee (clarified butter) for the fire ritual.
+    </p>
+
+    <p><strong>What should be the first thing taken into the house during Griha Pravesh?</strong> A Kalash filled with water, decorated with a coconut and mango leaves, is typically carried into the house first by the lady of the house. This symbolizes the start of life and prosperity in the new home.</p>
+
+    <p><strong>Can Griha Pravesh be done in an unfinished house?</strong> According to Vastu, it is not advisable to do Griha Pravesh in an unfinished house. The house should be fully constructed with doors, windows, and the roof in place before performing the ceremony to ensure the flow of positive energy.</p>
+</div>
+
+    </div>
+
+    <script>
+        // Function to handle the tab switching
+        function openTab(tabId) {
+            // Hide all tab content
+            var tabs = document.getElementsByClassName("tab-content");
+            for (var i = 0; i < tabs.length; i++) {
+                tabs[i].style.display = "none";
+            }
+
+            // Show the selected tab
+            document.getElementById(tabId).style.display = "block";
+        }
+
+        // Default tab (Muhurat Finder) when page loads
+        document.addEventListener("DOMContentLoaded", function () {
+            openTab('muhurat');
+        });
+
+        // Function to show Muhurat based on month and city
+        function showMuhurat() {
+            const month = document.getElementById('month').value;
+            const city = document.getElementById('city').value;
+            let resultBox = document.getElementById('result');
+            let muhuratDetails = '';
+
+            if (month === 'October 2024') {
+                muhuratDetails = `
+                    <h2>No Shubh day available for Griha Pravesh in October 2024</h2>
+                `;
+                document.getElementById("calendarImage").src = "a.jpg";
+            } else if (month === 'November 2024') {
+                muhuratDetails = `
+                    <div class="muhurat-details">
+                        <h3>November 4, 2024, Monday</h3>
+                        <p>Muhurat: 05:50 AM to 08:04 AM</p>
+                        <p>Nakshatra: Anuradha</p>
+                        <p>Tithi: Tritiya</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 7, 2024, Thursday</h3>
+                        <p>Muhurat: 12:34 AM to 05:52 AM, Nov 08</p>
+                        <p>Nakshatra: Uttara Ashadha</p>
+                        <p>Tithi: Saptami</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 8, 2024, Friday</h3>
+                        <p>Muhurat: 05:52 AM to 12:03 PM</p>
+                        <p>Nakshatra: Uttara Ashadha</p>
+                        <p>Tithi: Saptami</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 13, 2024, Wednesday</h3>
+                        <p>Muhurat: 01:01 PM to 03:11 AM, Nov 14</p>
+                        <p>Nakshatra: Revati</p>
+                        <p>Tithi: Trayodashi</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 16, 2024, Saturday</h3>
+                        <p>Muhurat: 07:28 PM to 05:57 AM, Nov 17</p>
+                        <p>Nakshatra: Rohini</p>
+                        <p>Tithi: Pratipada, Dwitiya</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 18, 2024, Monday</h3>
+                        <p>Muhurat: 05:58 AM to 03:49 PM</p>
+                        <p>Nakshatra: Mrigashirsha</p>
+                        <p>Tithi: Tritiya</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>November 25, 2024, Monday</h3>
+                        <p>Muhurat: 06:02 AM to 01:24 AM, Nov 26</p>
+                        <p>Nakshatra: Uttara Phalguni</p>
+                        <p>Tithi: Dashami</p>
+                    </div>
+                `;
+
+                document.getElementById("calendarImage").src = "b.jpg";
+            } else if (month === 'December 2024') {
+                if (city !== 'Bhubaneswar' && city !== 'Cuttack' && city !== 'Puri') {
+                    muhuratDetails += `
+                        <div class="muhurat-details">
+                            <h3>December 21, 2024, Saturday</h3>
+                            <p>Muhurat: 06:10 AM to 11:35 AM</p>
+                            <p>Nakshatra: Anuradha</p>
+                            <p>Tithi: Tritiya</p>
+                        </div>
+                    `;
+                }
+                muhuratDetails += `
+<div class="muhurat-details">
+                        <h3>December 5, 2024, Thursday</h3>
+                        <p>Muhurat: 12:49 PM to 05:26 PM</p>
+                        <p>Nakshatra: Uttara Ashadha</p>
+                        <p>Tithi: Panchami</p>
+                    </div>
+                    <div class="muhurat-details">
+                        <h3>December 11, 2024, Wednesday</h3>
+                        <p>Muhurat: 06:12 AM to 11:48 AM</p>
+                        <p>Nakshatra: Revati</p>
+                        <p>Tithi: Ekadashi</p>
+                    </div>
+
+                    <div class="muhurat-details">
+                        <h3>December 25, 2024, Wednesday</h3>
+                        <p>Muhurat: 06:20 AM to 03:22 PM</p>
+                        <p>Nakshatra: Chitra</p>
+                        <p>Tithi: Dashami</p>
+                    </div>
+                    <!-- Add more muhurat details for December -->
+                `;
+                document.getElementById("calendarImage").src = "c.jpg";
+            }
+
+            resultBox.innerHTML = muhuratDetails;
+        }
+ // Function to show calendar image based on selected month
+        function showCalendar(month) {
+            let calendarImage = document.getElementById("calendarImage");
+
+            if (month === 'October') {
+                calendarImage.src = "a.jpg";
+                calendarImage.alt = "October Calendar";
+            } else if (month === 'November') {
+                calendarImage.src = "b.jpg";
+                calendarImage.alt = "November Calendar";
+            } else if (month === 'December') {
+                calendarImage.src = "c.jpg";
+                calendarImage.alt = "December Calendar";
+            }
+
+            // Show the image after a button click
+            calendarImage.style.display = 'block';
+        }
+
+    </script>
+</body>
+
+</html>
+
